@@ -14,6 +14,13 @@
 		9BEAAAB61463A54C00D527A7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAAB51463A54C00D527A7 /* main.m */; };
 		9BEAAABA1463A54C00D527A7 /* PlacesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAAB91463A54C00D527A7 /* PlacesAppDelegate.m */; };
 		9BEAAABD1463A54C00D527A7 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BEAAABB1463A54C00D527A7 /* MainWindow.xib */; };
+		9BEAAAD51463A5DA00D527A7 /* FlickrFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAAC61463A5DA00D527A7 /* FlickrFetcher.m */; };
+		9BEAAAD61463A5DA00D527A7 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAACA1463A5DA00D527A7 /* NSObject+SBJSON.m */; };
+		9BEAAAD71463A5DA00D527A7 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAACC1463A5DA00D527A7 /* NSString+SBJSON.m */; };
+		9BEAAAD81463A5DA00D527A7 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAACE1463A5DA00D527A7 /* SBJSON.m */; };
+		9BEAAAD91463A5DA00D527A7 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAAD01463A5DA00D527A7 /* SBJsonBase.m */; };
+		9BEAAADA1463A5DA00D527A7 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAAD21463A5DA00D527A7 /* SBJsonParser.m */; };
+		9BEAAADB1463A5DA00D527A7 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAAD41463A5DA00D527A7 /* SBJsonWriter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,13 +28,29 @@
 		9BEAAAA91463A54C00D527A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9BEAAAAB1463A54C00D527A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9BEAAAAD1463A54C00D527A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		9BEAAAB11463A54C00D527A7 /* Places-Info.plist */ = {isa = PBXFileReference; path = "Places-Info.plist"; sourceTree = "<group>"; };
+		9BEAAAB11463A54C00D527A7 /* Places-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Places-Info.plist"; sourceTree = "<group>"; };
 		9BEAAAB31463A54C00D527A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9BEAAAB51463A54C00D527A7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9BEAAAB71463A54C00D527A7 /* Places-Prefix.pch */ = {isa = PBXFileReference; path = "Places-Prefix.pch"; sourceTree = "<group>"; };
-		9BEAAAB81463A54C00D527A7 /* PlacesAppDelegate.h */ = {isa = PBXFileReference; path = PlacesAppDelegate.h; sourceTree = "<group>"; };
+		9BEAAAB71463A54C00D527A7 /* Places-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Places-Prefix.pch"; sourceTree = "<group>"; };
+		9BEAAAB81463A54C00D527A7 /* PlacesAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlacesAppDelegate.h; sourceTree = "<group>"; };
 		9BEAAAB91463A54C00D527A7 /* PlacesAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlacesAppDelegate.m; sourceTree = "<group>"; };
 		9BEAAABC1463A54C00D527A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		9BEAAAC41463A5DA00D527A7 /* FlickrAPIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrAPIKey.h; sourceTree = "<group>"; };
+		9BEAAAC51463A5DA00D527A7 /* FlickrFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrFetcher.h; sourceTree = "<group>"; };
+		9BEAAAC61463A5DA00D527A7 /* FlickrFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrFetcher.m; sourceTree = "<group>"; };
+		9BEAAAC81463A5DA00D527A7 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		9BEAAAC91463A5DA00D527A7 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		9BEAAACA1463A5DA00D527A7 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		9BEAAACB1463A5DA00D527A7 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		9BEAAACC1463A5DA00D527A7 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		9BEAAACD1463A5DA00D527A7 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		9BEAAACE1463A5DA00D527A7 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		9BEAAACF1463A5DA00D527A7 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		9BEAAAD01463A5DA00D527A7 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		9BEAAAD11463A5DA00D527A7 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		9BEAAAD21463A5DA00D527A7 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		9BEAAAD31463A5DA00D527A7 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		9BEAAAD41463A5DA00D527A7 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +97,7 @@
 		9BEAAAAF1463A54C00D527A7 /* Places */ = {
 			isa = PBXGroup;
 			children = (
+				9BEAAAC31463A5AD00D527A7 /* Other Sources */,
 				9BEAAAB81463A54C00D527A7 /* PlacesAppDelegate.h */,
 				9BEAAAB91463A54C00D527A7 /* PlacesAppDelegate.m */,
 				9BEAAABB1463A54C00D527A7 /* MainWindow.xib */,
@@ -91,6 +115,37 @@
 				9BEAAAB71463A54C00D527A7 /* Places-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9BEAAAC31463A5AD00D527A7 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				9BEAAAC41463A5DA00D527A7 /* FlickrAPIKey.h */,
+				9BEAAAC51463A5DA00D527A7 /* FlickrFetcher.h */,
+				9BEAAAC61463A5DA00D527A7 /* FlickrFetcher.m */,
+				9BEAAAC71463A5DA00D527A7 /* JSON */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		9BEAAAC71463A5DA00D527A7 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				9BEAAAC81463A5DA00D527A7 /* JSON.h */,
+				9BEAAAC91463A5DA00D527A7 /* NSObject+SBJSON.h */,
+				9BEAAACA1463A5DA00D527A7 /* NSObject+SBJSON.m */,
+				9BEAAACB1463A5DA00D527A7 /* NSString+SBJSON.h */,
+				9BEAAACC1463A5DA00D527A7 /* NSString+SBJSON.m */,
+				9BEAAACD1463A5DA00D527A7 /* SBJSON.h */,
+				9BEAAACE1463A5DA00D527A7 /* SBJSON.m */,
+				9BEAAACF1463A5DA00D527A7 /* SBJsonBase.h */,
+				9BEAAAD01463A5DA00D527A7 /* SBJsonBase.m */,
+				9BEAAAD11463A5DA00D527A7 /* SBJsonParser.h */,
+				9BEAAAD21463A5DA00D527A7 /* SBJsonParser.m */,
+				9BEAAAD31463A5DA00D527A7 /* SBJsonWriter.h */,
+				9BEAAAD41463A5DA00D527A7 /* SBJsonWriter.m */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +209,13 @@
 			files = (
 				9BEAAAB61463A54C00D527A7 /* main.m in Sources */,
 				9BEAAABA1463A54C00D527A7 /* PlacesAppDelegate.m in Sources */,
+				9BEAAAD51463A5DA00D527A7 /* FlickrFetcher.m in Sources */,
+				9BEAAAD61463A5DA00D527A7 /* NSObject+SBJSON.m in Sources */,
+				9BEAAAD71463A5DA00D527A7 /* NSString+SBJSON.m in Sources */,
+				9BEAAAD81463A5DA00D527A7 /* SBJSON.m in Sources */,
+				9BEAAAD91463A5DA00D527A7 /* SBJsonBase.m in Sources */,
+				9BEAAADA1463A5DA00D527A7 /* SBJsonParser.m in Sources */,
+				9BEAAADB1463A5DA00D527A7 /* SBJsonWriter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
