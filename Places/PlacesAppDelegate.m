@@ -7,6 +7,8 @@
 //
 
 #import "PlacesAppDelegate.h"
+#import "TopPlacesTableViewController.h"
+#import "RecentPicturesTableViewController.h"
 
 @implementation PlacesAppDelegate
 
@@ -15,6 +17,28 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    
+    // create 2 table controllers for each tab
+    TopPlacesTableViewController *tpc = [[TopPlacesTableViewController alloc] init];
+    tpc.tabBarItem.title = @"Popular Places";
+    tpc.tabBarItem.image = [UIImage imageNamed:@"MostViewed.jpg"];
+    UINavigationController *tpcNav = [[UINavigationController alloc] initWithRootViewController:tpc];
+    [tpc release];
+    
+    RecentPicturesTableViewController *rpc = [[RecentPicturesTableViewController alloc] init];
+    rpc.tabBarItem.title = @"Recent Pictures";
+    rpc.tabBarItem.image = [UIImage imageNamed:@"MostViewed.jpg"];
+    UINavigationController *rpcNav = [[UINavigationController alloc] initWithRootViewController:rpc];
+    [rpc release];
+    
+    // create array of views and add it to the tab controller
+    NSArray *tabsArray = [[NSArray alloc] initWithObjects:tpcNav, rpcNav, nil];
+    tabBarController.viewControllers = tabsArray;
+    [tpcNav release];
+    [rpcNav release];
+    
+    [self.window addSubview:tabBarController.view];
     [self.window makeKeyAndVisible];
     return YES;
 }

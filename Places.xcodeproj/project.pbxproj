@@ -21,6 +21,9 @@
 		9BEAAAD91463A5DA00D527A7 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAAD01463A5DA00D527A7 /* SBJsonBase.m */; };
 		9BEAAADA1463A5DA00D527A7 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAAD21463A5DA00D527A7 /* SBJsonParser.m */; };
 		9BEAAADB1463A5DA00D527A7 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAAD41463A5DA00D527A7 /* SBJsonWriter.m */; };
+		9BEAAADE1466366300D527A7 /* TopPlacesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAADD1466366300D527A7 /* TopPlacesTableViewController.m */; };
+		9BEAAAE014663C6300D527A7 /* MostViewed.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BEAAADF14663C6300D527A7 /* MostViewed.jpg */; };
+		9BEAAAE31466408900D527A7 /* RecentPicturesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAAE21466408900D527A7 /* RecentPicturesTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,11 @@
 		9BEAAAD21463A5DA00D527A7 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
 		9BEAAAD31463A5DA00D527A7 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		9BEAAAD41463A5DA00D527A7 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		9BEAAADC1466366300D527A7 /* TopPlacesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopPlacesTableViewController.h; sourceTree = "<group>"; };
+		9BEAAADD1466366300D527A7 /* TopPlacesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopPlacesTableViewController.m; sourceTree = "<group>"; };
+		9BEAAADF14663C6300D527A7 /* MostViewed.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MostViewed.jpg; sourceTree = "<group>"; };
+		9BEAAAE11466408900D527A7 /* RecentPicturesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentPicturesTableViewController.h; sourceTree = "<group>"; };
+		9BEAAAE21466408900D527A7 /* RecentPicturesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentPicturesTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +110,10 @@
 				9BEAAAB91463A54C00D527A7 /* PlacesAppDelegate.m */,
 				9BEAAABB1463A54C00D527A7 /* MainWindow.xib */,
 				9BEAAAB01463A54C00D527A7 /* Supporting Files */,
+				9BEAAADC1466366300D527A7 /* TopPlacesTableViewController.h */,
+				9BEAAADD1466366300D527A7 /* TopPlacesTableViewController.m */,
+				9BEAAAE11466408900D527A7 /* RecentPicturesTableViewController.h */,
+				9BEAAAE21466408900D527A7 /* RecentPicturesTableViewController.m */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -109,6 +121,7 @@
 		9BEAAAB01463A54C00D527A7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9BEAAADF14663C6300D527A7 /* MostViewed.jpg */,
 				9BEAAAB11463A54C00D527A7 /* Places-Info.plist */,
 				9BEAAAB21463A54C00D527A7 /* InfoPlist.strings */,
 				9BEAAAB51463A54C00D527A7 /* main.m */,
@@ -197,6 +210,7 @@
 			files = (
 				9BEAAAB41463A54C00D527A7 /* InfoPlist.strings in Resources */,
 				9BEAAABD1463A54C00D527A7 /* MainWindow.xib in Resources */,
+				9BEAAAE014663C6300D527A7 /* MostViewed.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +230,8 @@
 				9BEAAAD91463A5DA00D527A7 /* SBJsonBase.m in Sources */,
 				9BEAAADA1463A5DA00D527A7 /* SBJsonParser.m in Sources */,
 				9BEAAADB1463A5DA00D527A7 /* SBJsonWriter.m in Sources */,
+				9BEAAADE1466366300D527A7 /* TopPlacesTableViewController.m in Sources */,
+				9BEAAAE31466408900D527A7 /* RecentPicturesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
