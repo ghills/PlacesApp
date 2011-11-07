@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface TopPlacesTableViewController : UITableViewController
+{
+    NSArray *topFlickrPlaces;
+}
+
+@property (readonly) NSArray * topFlickrPlaces;
 
 @end

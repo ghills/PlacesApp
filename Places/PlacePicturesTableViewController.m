@@ -1,16 +1,32 @@
 //
-//  TopPlacesTableViewController.m
+//  PlacePicturesTableViewController.m
 //  Places
 //
-//  Created by Gavin Hills on 11/5/11.
+//  Created by Gavin Hills on 11/6/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "TopPlacesTableViewController.h"
-#import "FlickrFetcher.h"
 #import "PlacePicturesTableViewController.h"
+#import "FlickrFetcher.h"
 
-@implementation TopPlacesTableViewController
+@interface PlacePicturesTableViewController()
+@property (readonly) NSArray * placePhotos;
+@end
+
+@implementation PlacePicturesTableViewController
+
+@synthesize placeID;
+
+- (NSArray *)placePhotos 
+{
+    if( !placePhotos )
+    {
+        placePhotos = [FlickrFetcher photosAtPlace:self.placeID];
+        [placePhotos retain];
+        //NSLog(@"%@",placePhotos);
+    }
+    return placePhotos;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,10 +50,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    self.title = @"Top Places";
-    
-    //NSLog(@"%@", [FlickrFetcher topPlaces]);
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -79,19 +91,9 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (NSArray *)topFlickrPlaces
-{
-    if( !topFlickrPlaces )
-    {
-        topFlickrPlaces = [FlickrFetcher topPlaces];
-        [topFlickrPlaces retain];
-    }
-    return topFlickrPlaces;
-}
-
 - (void)dealloc
 {
-    [topFlickrPlaces release];
+    [placePhotos release];
     
     [super dealloc];
 }
@@ -107,12 +109,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.topFlickrPlaces.count;
+    return self.placePhotos.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"TopPlacesCell";
+    static NSString *CellIdentifier = @"PlacePicturesTableCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -120,14 +122,23 @@
     }
     
     // Configure the cell...
-    NSDictionary * cellPlaceData = [self.topFlickrPlaces objectAtIndex:indexPath.row];
-    NSString * placeInfo = [cellPlaceData valueForKey:@"_content"];
-    NSArray * placeInfoComponents = [placeInfo componentsSeparatedByString:@", "];
+    NSDictionary * photoData = [self.placePhotos objectAtIndex:indexPath.row];
+    NSString * photoTitle = [photoData objectForKey:@"title"];
+    if( photoTitle.length == 0 )
+    {
+        photoTitle = @"Unknown";
+    }
     
-    cell.textLabel.text = [placeInfoComponents objectAtIndex:0];
-    cell.detailTextLabel.text = [[placeInfoComponents subarrayWithRange:NSMakeRange(1, placeInfoComponents.count - 1)] componentsJoinedByString:@", "];
-    //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ Photos", [cellPlaceData valueForKey:@"photo_count"]];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    NSDictionary * descriptionData = [photoData objectForKey:@"description"];
+    NSString * photoDescription = [descriptionData objectForKey:@"_content"];
+    if( photoDescription.length == 0 )
+    {
+        photoDescription = @"Unknown";
+    }
+    
+    cell.textLabel.text = photoTitle;
+    cell.detailTextLabel.text = photoDescription;
+    
     return cell;
 }
 
@@ -182,11 +193,25 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
-    PlacePicturesTableViewController * ppvc = [[PlacePicturesTableViewController alloc] init];
-    NSDictionary * placeInfo = [self.topFlickrPlaces objectAtIndex:indexPath.row];
-    ppvc.placeID = [placeInfo objectForKey:@"place_id"];
-    [self.navigationController pushViewController:ppvc animated:YES];
-    [ppvc release];
+    NSDictionary * photoInfo = [self.placePhotos objectAtIndex:indexPath.row];
+    NSData * photoData = [FlickrFetcher imageDataForPhotoWithFlickrInfo:photoInfo format:FlickrFetcherPhotoFormatLarge];
+    
+    UIImage *image = [UIImage imageWithData:photoData];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame]; /* foo? */
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:applicationFrame];
+    scrollView.contentSize = image.size;
+    scrollView.minimumZoomScale = 0.3;
+    scrollView.maximumZoomScale = 3.0;
+    //scrollView.delegate = self;
+    
+    [scrollView addSubview:imageView];
+    [imageView release];
+    UIViewController *vc = [[UIViewController alloc] init];
+    vc.view = scrollView;
+    [scrollView release];
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
 }
 
 @end

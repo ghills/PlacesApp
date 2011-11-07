@@ -24,6 +24,7 @@
 		9BEAAADE1466366300D527A7 /* TopPlacesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAADD1466366300D527A7 /* TopPlacesTableViewController.m */; };
 		9BEAAAE014663C6300D527A7 /* MostViewed.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BEAAADF14663C6300D527A7 /* MostViewed.jpg */; };
 		9BEAAAE31466408900D527A7 /* RecentPicturesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAAE21466408900D527A7 /* RecentPicturesTableViewController.m */; };
+		9BEAAAE61467848300D527A7 /* PlacePicturesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAAE51467848300D527A7 /* PlacePicturesTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,8 @@
 		9BEAAADF14663C6300D527A7 /* MostViewed.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MostViewed.jpg; sourceTree = "<group>"; };
 		9BEAAAE11466408900D527A7 /* RecentPicturesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentPicturesTableViewController.h; sourceTree = "<group>"; };
 		9BEAAAE21466408900D527A7 /* RecentPicturesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentPicturesTableViewController.m; sourceTree = "<group>"; };
+		9BEAAAE41467848300D527A7 /* PlacePicturesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacePicturesTableViewController.h; sourceTree = "<group>"; };
+		9BEAAAE51467848300D527A7 /* PlacePicturesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacePicturesTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,8 @@
 				9BEAAADD1466366300D527A7 /* TopPlacesTableViewController.m */,
 				9BEAAAE11466408900D527A7 /* RecentPicturesTableViewController.h */,
 				9BEAAAE21466408900D527A7 /* RecentPicturesTableViewController.m */,
+				9BEAAAE41467848300D527A7 /* PlacePicturesTableViewController.h */,
+				9BEAAAE51467848300D527A7 /* PlacePicturesTableViewController.m */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -232,6 +237,7 @@
 				9BEAAADB1463A5DA00D527A7 /* SBJsonWriter.m in Sources */,
 				9BEAAADE1466366300D527A7 /* TopPlacesTableViewController.m in Sources */,
 				9BEAAAE31466408900D527A7 /* RecentPicturesTableViewController.m in Sources */,
+				9BEAAAE61467848300D527A7 /* PlacePicturesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
