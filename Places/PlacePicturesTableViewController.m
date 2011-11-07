@@ -8,6 +8,8 @@
 
 #import "PlacePicturesTableViewController.h"
 #import "FlickrFetcher.h"
+#import "FlickrPhotoViewController.h"
+#import "FlickrLocationStringUtility.h"
 
 @interface PlacePicturesTableViewController()
 @property (readonly) NSArray * placePhotos;
@@ -16,6 +18,7 @@
 @implementation PlacePicturesTableViewController
 
 @synthesize placeID;
+@synthesize placeInfo;
 
 - (NSArray *)placePhotos 
 {
@@ -56,6 +59,12 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.title = [FlickrLocationStringUtility LocationCityNameFromString:[self.placeInfo objectForKey:@"_content"]];
+    if( self.title.length == 0 )
+    {
+        self.title = @"Unknown Location";
+    }
 }
 
 - (void)viewDidUnload
@@ -94,6 +103,8 @@
 - (void)dealloc
 {
     [placePhotos release];
+    [placeID release];
+    [placeInfo release];
     
     [super dealloc];
 }
@@ -193,25 +204,10 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
-    NSDictionary * photoInfo = [self.placePhotos objectAtIndex:indexPath.row];
-    NSData * photoData = [FlickrFetcher imageDataForPhotoWithFlickrInfo:photoInfo format:FlickrFetcherPhotoFormatLarge];
-    
-    UIImage *image = [UIImage imageWithData:photoData];
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    CGRect applicationFrame = [[UIScreen mainScreen] applicationFrame]; /* foo? */
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:applicationFrame];
-    scrollView.contentSize = image.size;
-    scrollView.minimumZoomScale = 0.3;
-    scrollView.maximumZoomScale = 3.0;
-    //scrollView.delegate = self;
-    
-    [scrollView addSubview:imageView];
-    [imageView release];
-    UIViewController *vc = [[UIViewController alloc] init];
-    vc.view = scrollView;
-    [scrollView release];
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
+    FlickrPhotoViewController *fvc = [[FlickrPhotoViewController alloc] init];
+    fvc.photoInfo = [placePhotos objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:fvc animated:YES];
+    [fvc release];
 }
 
 @end

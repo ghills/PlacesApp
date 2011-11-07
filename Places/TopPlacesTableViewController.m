@@ -9,6 +9,7 @@
 #import "TopPlacesTableViewController.h"
 #import "FlickrFetcher.h"
 #import "PlacePicturesTableViewController.h"
+#import "FlickrLocationStringUtility.h"
 
 @implementation TopPlacesTableViewController
 
@@ -122,10 +123,10 @@
     // Configure the cell...
     NSDictionary * cellPlaceData = [self.topFlickrPlaces objectAtIndex:indexPath.row];
     NSString * placeInfo = [cellPlaceData valueForKey:@"_content"];
-    NSArray * placeInfoComponents = [placeInfo componentsSeparatedByString:@", "];
     
-    cell.textLabel.text = [placeInfoComponents objectAtIndex:0];
-    cell.detailTextLabel.text = [[placeInfoComponents subarrayWithRange:NSMakeRange(1, placeInfoComponents.count - 1)] componentsJoinedByString:@", "];
+    cell.textLabel.text = [FlickrLocationStringUtility LocationCityNameFromString:placeInfo];
+    cell.detailTextLabel.text = [FlickrLocationStringUtility LocationStateCountryFromString:placeInfo];
+    
     //cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ Photos", [cellPlaceData valueForKey:@"photo_count"]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
@@ -185,6 +186,7 @@
     PlacePicturesTableViewController * ppvc = [[PlacePicturesTableViewController alloc] init];
     NSDictionary * placeInfo = [self.topFlickrPlaces objectAtIndex:indexPath.row];
     ppvc.placeID = [placeInfo objectForKey:@"place_id"];
+    ppvc.placeInfo = placeInfo;
     [self.navigationController pushViewController:ppvc animated:YES];
     [ppvc release];
 }

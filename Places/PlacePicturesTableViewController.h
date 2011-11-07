@@ -11,9 +11,11 @@
 @interface PlacePicturesTableViewController : UITableViewController
 {
     NSString * placeID;
+    NSDictionary * placeInfo;
     NSArray * placePhotos;
 }
 
 @property (retain) NSString * placeID;
+@property (retain) NSDictionary * placeInfo;
 
 @end

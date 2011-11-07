@@ -25,6 +25,8 @@
 		9BEAAAE014663C6300D527A7 /* MostViewed.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BEAAADF14663C6300D527A7 /* MostViewed.jpg */; };
 		9BEAAAE31466408900D527A7 /* RecentPicturesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAAE21466408900D527A7 /* RecentPicturesTableViewController.m */; };
 		9BEAAAE61467848300D527A7 /* PlacePicturesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAAE51467848300D527A7 /* PlacePicturesTableViewController.m */; };
+		9BEAAAED146793B500D527A7 /* FlickrPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAAEC146793B500D527A7 /* FlickrPhotoViewController.m */; };
+		9BEAAAF914679A8800D527A7 /* FlickrLocationStringUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BEAAAF814679A8800D527A7 /* FlickrLocationStringUtility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,10 @@
 		9BEAAAE21466408900D527A7 /* RecentPicturesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentPicturesTableViewController.m; sourceTree = "<group>"; };
 		9BEAAAE41467848300D527A7 /* PlacePicturesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacePicturesTableViewController.h; sourceTree = "<group>"; };
 		9BEAAAE51467848300D527A7 /* PlacePicturesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacePicturesTableViewController.m; sourceTree = "<group>"; };
+		9BEAAAEB146793B500D527A7 /* FlickrPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPhotoViewController.h; sourceTree = "<group>"; };
+		9BEAAAEC146793B500D527A7 /* FlickrPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrPhotoViewController.m; sourceTree = "<group>"; };
+		9BEAAAF714679A8800D527A7 /* FlickrLocationStringUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrLocationStringUtility.h; sourceTree = "<group>"; };
+		9BEAAAF814679A8800D527A7 /* FlickrLocationStringUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlickrLocationStringUtility.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +114,7 @@
 		9BEAAAAF1463A54C00D527A7 /* Places */ = {
 			isa = PBXGroup;
 			children = (
+				9BEAAAF614679A1A00D527A7 /* Utility */,
 				9BEAAAC31463A5AD00D527A7 /* Other Sources */,
 				9BEAAAB81463A54C00D527A7 /* PlacesAppDelegate.h */,
 				9BEAAAB91463A54C00D527A7 /* PlacesAppDelegate.m */,
@@ -119,6 +126,8 @@
 				9BEAAAE21466408900D527A7 /* RecentPicturesTableViewController.m */,
 				9BEAAAE41467848300D527A7 /* PlacePicturesTableViewController.h */,
 				9BEAAAE51467848300D527A7 /* PlacePicturesTableViewController.m */,
+				9BEAAAEB146793B500D527A7 /* FlickrPhotoViewController.h */,
+				9BEAAAEC146793B500D527A7 /* FlickrPhotoViewController.m */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -164,6 +173,15 @@
 				9BEAAAD41463A5DA00D527A7 /* SBJsonWriter.m */,
 			);
 			path = JSON;
+			sourceTree = "<group>";
+		};
+		9BEAAAF614679A1A00D527A7 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				9BEAAAF714679A8800D527A7 /* FlickrLocationStringUtility.h */,
+				9BEAAAF814679A8800D527A7 /* FlickrLocationStringUtility.m */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +256,8 @@
 				9BEAAADE1466366300D527A7 /* TopPlacesTableViewController.m in Sources */,
 				9BEAAAE31466408900D527A7 /* RecentPicturesTableViewController.m in Sources */,
 				9BEAAAE61467848300D527A7 /* PlacePicturesTableViewController.m in Sources */,
+				9BEAAAED146793B500D527A7 /* FlickrPhotoViewController.m in Sources */,
+				9BEAAAF914679A8800D527A7 /* FlickrLocationStringUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
