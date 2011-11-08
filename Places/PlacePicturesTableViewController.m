@@ -97,7 +97,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 - (void)dealloc
@@ -135,13 +135,17 @@
     // Configure the cell...
     NSDictionary * photoData = [self.placePhotos objectAtIndex:indexPath.row];
     NSString * photoTitle = [photoData objectForKey:@"title"];
-    if( photoTitle.length == 0 )
+    NSDictionary * descriptionData = [photoData objectForKey:@"description"];
+    NSString * photoDescription = [descriptionData objectForKey:@"_content"];
+    if( photoTitle.length == 0 && photoDescription.length > 0 )
     {
         photoTitle = @"Unknown";
     }
+    else if( photoTitle.length == 0 )
+    {
+        photoTitle = photoDescription;
+    }
     
-    NSDictionary * descriptionData = [photoData objectForKey:@"description"];
-    NSString * photoDescription = [descriptionData objectForKey:@"_content"];
     if( photoDescription.length == 0 )
     {
         photoDescription = @"Unknown";

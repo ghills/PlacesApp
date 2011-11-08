@@ -43,14 +43,18 @@
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:applicationFrame];
     scrollView.contentSize = image.size;
     scrollView.minimumZoomScale = 0.3;
-    scrollView.maximumZoomScale = 3.0;
+    scrollView.maximumZoomScale = 5.0;
     scrollView.delegate = self;
     
     [scrollView addSubview:iView];
     self.view = scrollView;
     [scrollView release];
     imageView = iView;
-    
+}
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad
+{
     self.title = [self.photoInfo objectForKey:@"title"];
     if( self.title.length == 0 )
     {
@@ -58,13 +62,6 @@
     }
 }
 
-/*
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-*/
 
 - (void)viewDidUnload
 {
@@ -73,10 +70,25 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewDidLoad];
+    
+    CGRect bounds = self.view.bounds;
+    CGSize imageSize = imageView.image.size;
+    
+    CGFloat xRatio = ( bounds.size.width / imageSize.width );
+    CGFloat yRatio = ( bounds.size.height / imageSize.height );
+    CGFloat zoomScale = MAX(xRatio, yRatio);
+    
+    UIScrollView * scrollView = (UIScrollView *)self.view;
+    [scrollView setZoomScale:zoomScale animated:NO];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    return YES;
 }
 
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
