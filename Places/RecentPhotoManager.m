@@ -33,7 +33,7 @@
 
 + (NSArray *)GetRecentlyViewedPhotos
 {
-    NSArray * recentPhotos = [[NSArray alloc] initWithObjects:@"foo", nil];
+    NSArray * recentPhotos = [[NSUserDefaults standardUserDefaults] objectForKey:RECENT_PHOTO_KEY];
     [recentPhotos autorelease];
     return recentPhotos;
 }

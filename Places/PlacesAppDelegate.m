@@ -6,9 +6,10 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import "PicturesTableViewController.h"
 #import "PlacesAppDelegate.h"
 #import "TopPlacesTableViewController.h"
-#import "RecentPicturesTableViewController.h"
+#import "RecentPhotoManager.h"
 
 @implementation PlacesAppDelegate
 
@@ -26,11 +27,21 @@
     UINavigationController *tpcNav = [[UINavigationController alloc] initWithRootViewController:tpc];
     [tpc release];
     
+    /*
     RecentPicturesTableViewController *rpc = [[RecentPicturesTableViewController alloc] init];
     rpc.tabBarItem.title = @"Recent Pictures";
     rpc.tabBarItem.image = [UIImage imageNamed:@"MostViewed.jpg"];
     UINavigationController *rpcNav = [[UINavigationController alloc] initWithRootViewController:rpc];
     [rpc release];
+     */
+    
+    PicturesTableViewController * pvc = [[PicturesTableViewController alloc] init];
+    pvc.title = @"Recently Viewed";
+    pvc.photoList = [RecentPhotoManager GetRecentlyViewedPhotos];
+    pvc.tabBarItem.title = @"Recent Pictures";
+    pvc.tabBarItem.image = [UIImage imageNamed:@"MostViewed.jpg"];
+    UINavigationController *rpcNav = [[UINavigationController alloc] initWithRootViewController:pvc];
+    [pvc release];
     
     // create array of views and add it to the tab controller
     NSArray *tabsArray = [[NSArray alloc] initWithObjects:tpcNav, rpcNav, nil];
