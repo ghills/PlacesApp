@@ -8,6 +8,7 @@
 
 #import "FlickrPhotoViewController.h"
 #import "FlickrFetcher.h"
+#import "RecentPhotoManager.h"
 
 @implementation FlickrPhotoViewController
 
@@ -59,6 +60,11 @@
     if( self.title.length == 0 )
     {
         self.title = @"Unknown";
+    }
+    
+    if( self.photoInfo )
+    {
+        [RecentPhotoManager AddRecentlyViewedPhoto:self.photoInfo];
     }
 }
 

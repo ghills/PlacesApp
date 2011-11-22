@@ -1,35 +1,17 @@
 //
-//  PlacePicturesTableViewController.m
+//  PicturesTableViewController.m
 //  Places
 //
-//  Created by Gavin Hills on 11/6/11.
+//  Created by Gavin Hills on 11/21/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "PlacePicturesTableViewController.h"
-#import "FlickrFetcher.h"
+#import "PicturesTableViewController.h"
 #import "FlickrPhotoViewController.h"
-#import "FlickrLocationStringUtility.h"
 
-@interface PlacePicturesTableViewController()
-@property (readonly) NSArray * placePhotos;
-@end
+@implementation PicturesTableViewController
 
-@implementation PlacePicturesTableViewController
-
-@synthesize placeID;
-@synthesize placeInfo;
-
-- (NSArray *)placePhotos 
-{
-    if( !placePhotos )
-    {
-        placePhotos = [FlickrFetcher photosAtPlace:self.placeID];
-        [placePhotos retain];
-        //NSLog(@"%@",placePhotos);
-    }
-    return placePhotos;
-}
+@synthesize photoList;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -53,18 +35,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.title = [FlickrLocationStringUtility LocationCityNameFromString:[self.placeInfo objectForKey:@"_content"]];
-    if( self.title.length == 0 )
-    {
-        self.title = @"Unknown Location";
-    }
+    //self.title = [FlickrLocationStringUtility LocationCityNameFromString:[self.placeInfo objectForKey:@"_content"]];
+    //if( self.title.length == 0 )
+    //{
+    //    self.title = @"Unknown Location";
+    //}
 }
 
 - (void)viewDidUnload
@@ -102,9 +84,7 @@
 
 - (void)dealloc
 {
-    [placePhotos release];
-    [placeID release];
-    [placeInfo release];
+    self.photoList = nil;
     
     [super dealloc];
 }
@@ -120,12 +100,12 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return self.placePhotos.count;
+    return self.photoList.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"PlacePicturesTableCell";
+    static NSString *CellIdentifier = @"PicturesTableCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -133,7 +113,7 @@
     }
     
     // Configure the cell...
-    NSDictionary * photoData = [self.placePhotos objectAtIndex:indexPath.row];
+    NSDictionary * photoData = [self.photoList objectAtIndex:indexPath.row];
     NSString * photoTitle = [photoData objectForKey:@"title"];
     NSDictionary * descriptionData = [photoData objectForKey:@"description"];
     NSString * photoDescription = [descriptionData objectForKey:@"_content"];
@@ -158,43 +138,43 @@
 }
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }   
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }   
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 #pragma mark - Table view delegate
 
@@ -209,9 +189,10 @@
      [detailViewController release];
      */
     FlickrPhotoViewController *fvc = [[FlickrPhotoViewController alloc] init];
-    fvc.photoInfo = [placePhotos objectAtIndex:indexPath.row];
+    fvc.photoInfo = [photoList objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:fvc animated:YES];
     [fvc release];
 }
+
 
 @end

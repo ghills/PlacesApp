@@ -8,7 +8,7 @@
 
 #import "TopPlacesTableViewController.h"
 #import "FlickrFetcher.h"
-#import "PlacePicturesTableViewController.h"
+#import "PicturesTableViewController.h"
 #import "FlickrLocationStringUtility.h"
 
 @implementation TopPlacesTableViewController
@@ -183,12 +183,20 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+    /*
     PlacePicturesTableViewController * ppvc = [[PlacePicturesTableViewController alloc] init];
     NSDictionary * placeInfo = [self.topFlickrPlaces objectAtIndex:indexPath.row];
     ppvc.placeID = [placeInfo objectForKey:@"place_id"];
     ppvc.placeInfo = placeInfo;
     [self.navigationController pushViewController:ppvc animated:YES];
     [ppvc release];
+     */
+    PicturesTableViewController * pvc = [[PicturesTableViewController alloc] init];
+    NSDictionary * placeInfo = [self.topFlickrPlaces objectAtIndex:indexPath.row];
+    pvc.title = [FlickrLocationStringUtility LocationCityNameFromString:[placeInfo objectForKey:@"_content"]];
+    pvc.photoList = [FlickrFetcher photosAtPlace:[placeInfo objectForKey:@"place_id"]];
+    [self.navigationController pushViewController:pvc animated:YES];
+    [pvc release];
 }
 
 @end
