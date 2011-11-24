@@ -12,6 +12,7 @@
 @implementation PicturesTableViewController
 
 @synthesize photoList;
+@synthesize photoListSource;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -47,6 +48,8 @@
     //{
     //    self.title = @"Unknown Location";
     //}
+    
+    
 }
 
 - (void)viewDidUnload
@@ -59,6 +62,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    if( self.photoListSource && [self.photoListSource PictureListNeedsUpdate] )
+    {
+        self.photoList = [self.photoListSource GetPictureInfoList];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -85,6 +93,7 @@
 - (void)dealloc
 {
     self.photoList = nil;
+    self.photoListSource = nil;
     
     [super dealloc];
 }

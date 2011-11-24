@@ -10,6 +10,7 @@
 #import "PlacesAppDelegate.h"
 #import "TopPlacesTableViewController.h"
 #import "RecentPhotoManager.h"
+#import "RecentPictureInfoSource.h"
 
 @implementation PlacesAppDelegate
 
@@ -36,12 +37,16 @@
      */
     
     PicturesTableViewController * pvc = [[PicturesTableViewController alloc] init];
+    RecentPictureInfoSource * pis = [[RecentPictureInfoSource alloc] init];
+    [pis autorelease];
     pvc.title = @"Recently Viewed";
     pvc.photoList = [RecentPhotoManager GetRecentlyViewedPhotos];
     pvc.tabBarItem.title = @"Recent Pictures";
     pvc.tabBarItem.image = [UIImage imageNamed:@"MostViewed.jpg"];
+    pvc.photoListSource = pis;
     UINavigationController *rpcNav = [[UINavigationController alloc] initWithRootViewController:pvc];
     [pvc release];
+    //[pis release];
     
     // create array of views and add it to the tab controller
     NSArray *tabsArray = [[NSArray alloc] initWithObjects:tpcNav, rpcNav, nil];

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9BE35FA4147EDE14003EDF1D /* LocationPictureInfoSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE35FA3147EDE14003EDF1D /* LocationPictureInfoSource.m */; };
+		9BE35FA7147EE329003EDF1D /* RecentPictureInfoSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE35FA6147EE329003EDF1D /* RecentPictureInfoSource.m */; };
 		9BEAAAAA1463A54C00D527A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BEAAAA91463A54C00D527A7 /* UIKit.framework */; };
 		9BEAAAAC1463A54C00D527A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BEAAAAB1463A54C00D527A7 /* Foundation.framework */; };
 		9BEAAAAE1463A54C00D527A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BEAAAAD1463A54C00D527A7 /* CoreGraphics.framework */; };
@@ -30,6 +32,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9BE35FA0147EDC43003EDF1D /* FlickrPictureInfoSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlickrPictureInfoSource.h; sourceTree = "<group>"; };
+		9BE35FA2147EDE14003EDF1D /* LocationPictureInfoSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationPictureInfoSource.h; sourceTree = "<group>"; };
+		9BE35FA3147EDE14003EDF1D /* LocationPictureInfoSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationPictureInfoSource.m; sourceTree = "<group>"; };
+		9BE35FA5147EE329003EDF1D /* RecentPictureInfoSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecentPictureInfoSource.h; sourceTree = "<group>"; };
+		9BE35FA6147EE329003EDF1D /* RecentPictureInfoSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecentPictureInfoSource.m; sourceTree = "<group>"; };
 		9BEAAAA51463A54C00D527A7 /* Places.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Places.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BEAAAA91463A54C00D527A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9BEAAAAB1463A54C00D527A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -176,10 +183,15 @@
 		9BEAAAF614679A1A00D527A7 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				9BE35FA0147EDC43003EDF1D /* FlickrPictureInfoSource.h */,
 				9BEAAAF714679A8800D527A7 /* FlickrLocationStringUtility.h */,
 				9BEAAAF814679A8800D527A7 /* FlickrLocationStringUtility.m */,
 				9BEAAAFA1468F1D000D527A7 /* RecentPhotoManager.h */,
 				9BEAAAFB1468F1D000D527A7 /* RecentPhotoManager.m */,
+				9BE35FA2147EDE14003EDF1D /* LocationPictureInfoSource.h */,
+				9BE35FA3147EDE14003EDF1D /* LocationPictureInfoSource.m */,
+				9BE35FA5147EE329003EDF1D /* RecentPictureInfoSource.h */,
+				9BE35FA6147EE329003EDF1D /* RecentPictureInfoSource.m */,
 			);
 			name = Utility;
 			sourceTree = "<group>";
@@ -258,6 +270,8 @@
 				9BEAAAF914679A8800D527A7 /* FlickrLocationStringUtility.m in Sources */,
 				9BEAAAFC1468F1D000D527A7 /* RecentPhotoManager.m in Sources */,
 				9BEAAAFF147B5F2A00D527A7 /* PicturesTableViewController.m in Sources */,
+				9BE35FA4147EDE14003EDF1D /* LocationPictureInfoSource.m in Sources */,
+				9BE35FA7147EE329003EDF1D /* RecentPictureInfoSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +381,7 @@
 				9BEAAAC21463A54C00D527A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

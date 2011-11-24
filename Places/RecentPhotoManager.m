@@ -26,16 +26,21 @@
     if( recentPhotos )
     {
         recentPhotos = [recentPhotos arrayByAddingObject:photoInfo];
+        [recentPhotos retain];
+    }
+    else
+    {
+        recentPhotos = [NSArray arrayWithObject:photoInfo];
     }
     
     [userDefaults setObject:recentPhotos forKey:RECENT_PHOTO_KEY];
+    
+    [recentPhotos release];
 }
 
 + (NSArray *)GetRecentlyViewedPhotos
 {
-    NSArray * recentPhotos = [[NSUserDefaults standardUserDefaults] objectForKey:RECENT_PHOTO_KEY];
-    [recentPhotos autorelease];
-    return recentPhotos;
+    return [[NSUserDefaults standardUserDefaults] objectForKey:RECENT_PHOTO_KEY];
 }
 
 @end

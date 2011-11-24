@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FlickrPictureInfoSource.h"
 
 @interface PicturesTableViewController : UITableViewController
 {
     NSArray * photoList;
+    id <FlickrPictureInfoSource> photoListSource;
 }
 
 @property (retain) NSArray * photoList;
+@property (retain) id <FlickrPictureInfoSource> photoListSource;
 
 @end
