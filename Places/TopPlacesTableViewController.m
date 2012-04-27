@@ -84,7 +84,7 @@
 {
     if( !topFlickrPlaces )
     {
-        topFlickrPlaces = [FlickrFetcher topPlaces];
+        topFlickrPlaces = [[FlickrFetcher topPlaces] sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"_content" ascending:YES]]];
         [topFlickrPlaces retain];
     }
     return topFlickrPlaces;
