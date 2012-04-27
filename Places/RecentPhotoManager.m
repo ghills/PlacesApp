@@ -8,34 +8,45 @@
 
 #import "RecentPhotoManager.h"
 
-#define RECENT_PHOTO_KEY    @"recent_photos"
-#define MAX_RECENT_PHOTOS   20
+#define RECENT_PHOTO_KEY    @"recent_photo_list"
+#define TIMESTAMP_ATTR  @"viewedTimestamp"
+#define MAX_RECENT_PHOTOS   10
 
 @implementation RecentPhotoManager
 
 + (void)AddRecentlyViewedPhoto:(NSDictionary *)photoInfo
 {
-    NSArray * recentPhotos;
     NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
-    
-    if( userDefaults )
+    NSArray * recentPhotoArray = [userDefaults objectForKey:RECENT_PHOTO_KEY];
+    if( recentPhotoArray )
     {
-        recentPhotos = [userDefaults objectForKey:RECENT_PHOTO_KEY];
-    }
-    
-    if( recentPhotos )
-    {
-        recentPhotos = [recentPhotos arrayByAddingObject:photoInfo];
-        [recentPhotos retain];
+        NSMutableArray * recentPhotoArrayChangable = [NSMutableArray arrayWithArray:recentPhotoArray];
+        
+        NSUInteger indexOfExistingPicture = [recentPhotoArrayChangable indexOfObject:photoInfo];
+        if( indexOfExistingPicture != NSNotFound )
+        {
+            // This exact picture already exists in the recent list, so remove it first
+            [recentPhotoArrayChangable removeObjectAtIndex:indexOfExistingPicture];
+        }
+        
+        // Now insert this picture at the start of the array. Most recent first.
+        [recentPhotoArrayChangable insertObject:photoInfo atIndex:0];
+        
+        recentPhotoArray = [NSArray arrayWithArray:recentPhotoArrayChangable];
     }
     else
     {
-        recentPhotos = [NSArray arrayWithObject:photoInfo];
+        // First picture being added! Create array with this photo.
+        recentPhotoArray = [NSArray arrayWithObject:photoInfo];
     }
     
-    [userDefaults setObject:recentPhotos forKey:RECENT_PHOTO_KEY];
+    // check if recent photo list is too large, chop off the end if needed
+    if( recentPhotoArray.count > MAX_RECENT_PHOTOS )
+    {
+        recentPhotoArray = [recentPhotoArray subarrayWithRange:NSMakeRange(0, 10)];
+    }
     
-    [recentPhotos release];
+    [userDefaults setObject:recentPhotoArray forKey:RECENT_PHOTO_KEY];
 }
 
 + (NSArray *)GetRecentlyViewedPhotos
