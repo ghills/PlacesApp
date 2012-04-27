@@ -175,26 +175,14 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
-    /*
-    PlacePicturesTableViewController * ppvc = [[PlacePicturesTableViewController alloc] init];
-    NSDictionary * placeInfo = [self.topFlickrPlaces objectAtIndex:indexPath.row];
-    ppvc.placeID = [placeInfo objectForKey:@"place_id"];
-    ppvc.placeInfo = placeInfo;
-    [self.navigationController pushViewController:ppvc animated:YES];
-    [ppvc release];
-     */
     PicturesTableViewController * pvc = [[PicturesTableViewController alloc] init];
     NSDictionary * placeInfo = [self.topFlickrPlaces objectAtIndex:indexPath.row];
     pvc.title = [FlickrLocationStringUtility LocationCityNameFromString:[placeInfo objectForKey:@"_content"]];
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = TRUE;
     pvc.photoList = [FlickrFetcher photosAtPlace:[placeInfo objectForKey:@"place_id"]];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = FALSE;
+    
     [self.navigationController pushViewController:pvc animated:YES];
     [pvc release];
 }

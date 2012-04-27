@@ -66,6 +66,7 @@
     if( self.photoListSource && [self.photoListSource PictureListNeedsUpdate] )
     {
         self.photoList = [self.photoListSource GetPictureInfoList];
+        [self.tableView reloadData];
     }
 }
 
@@ -189,14 +190,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
     FlickrPhotoViewController *fvc = [[FlickrPhotoViewController alloc] init];
     fvc.photoInfo = [photoList objectAtIndex:indexPath.row];
     [self.navigationController pushViewController:fvc animated:YES];
